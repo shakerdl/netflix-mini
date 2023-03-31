@@ -1,0 +1,11 @@
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+
+.container {
+    display: grid; 
+    grid-template-columns: 1fr; 
+    grid-template-rows: 0.3fr 1.7fr 1.5fr 0.5fr; 
+    min-height: 100vh;
+  }
