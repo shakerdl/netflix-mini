@@ -1,7 +1,17 @@
-html, body {
-    height: 100%;
-    margin: 0;
-  }
+html {
+    font-size: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    min-height: 100vh;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
 
 .container {
     display: grid; 

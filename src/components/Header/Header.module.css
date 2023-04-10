@@ -1,4 +1,44 @@
 .header {
     background-color: blue;
     grid-area: 1 / 1 / 2 / 2;
+    display: flex;
+    justify-content: space-between;
 }
+
+
+
+/* Left Header */
+.leftHeader>div {
+    display: inline-block;
+}
+
+/* Right Header */
+nav {
+    padding: 10px;
+
+    @media (min-width: 600px){
+        padding: 20px;
+    }
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+li {
+    display: inline;
+}
+.logoContainer {
+    display: grid;
+
+}
+
+
+.logoContainer img {
+    width: 100%; /* Start with 100% width */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  
+  
