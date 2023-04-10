@@ -16,9 +16,9 @@ const Header = () => {
             <div className={styles.rightRight}>
                 <nav>
                     <ul>
-                        <li><a>Home</a></li>
-                        <li><a>About</a></li>
-                        <li><a>Contact</a></li>
+                        <li><a>Home page</a></li>
+                        <li><a>Tv shows</a></li>
+                        <li><a>Movies</a></li>
                     </ul>
                 </nav>
                 <div className={styles.logoContainer}>
