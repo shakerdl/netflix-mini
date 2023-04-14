@@ -1,29 +1,84 @@
-import React, { useEffect } from 'react'
-import styles from './Hero.module.css'
+import React, { useEffect } from "react";
+import styles from "./Hero.module.css";
+import config from "../../config";
+import ModalVideo from "../../components/ModalVideo";
+import { useState } from "react";
+import Youtube from "react-youtube";
+
+const movies = [
+  {
+    id: 458156,
+    name: "john-wick-chapter-3",
+    youtube: "pU8-7BX9uxs",
+  },
+  {
+    id: 320288,
+    name: "dark-phoenix",
+    youtube: "pU8-7BX9uxs",
+  },
+  {
+    id: 373571,
+    name: "godzilla-king-of-the-monsters",
+    youtube: "pU8-7BX9uxs",
+  },
+];
+
 export const Hero = () => {
-    useEffect(() => {
-        const options = {
-            method: 'GET',
-            headers: {
-                'X-RapidAPI-Key': '8af513d0a8mshe16b494f53b94edp1606a8jsne2dcbe52bd92',
-                'X-RapidAPI-Host': 'unogs-unogs-v1.p.rapidapi.com'
-            }
-        };
-
-        fetch('https://unogs-unogs-v1.p.rapidapi.com/search/titles?order_by=date&type=movie', options)
-            .then(response => response.json())
-            .then(response => console.log(response))
-            .catch(err => console.error(err));
-
-
-        return () => {
-        }
-    }, [])
-
-
-    return (
-        <section className={styles.hero}>
-            Hero
-        </section>
+  const API_URL = "https://api.themoviedb.org/3/";
+  const [movieDetailes, setMovieDetailes] = useState("");
+  const [movieUrl, setmovieUrl] = useState("");
+  // todo: add random url that match the video from
+  useEffect(() => {
+    fetch(
+      `${API_URL}movie/${movies[0].id}?api_key=${config.NETFLIX_MINI_API_KEY}`
     )
-}
+      .then((response) => response.json())
+      .then((response) => setMovieDetailes(response))
+      .catch((err) => console.error(err));
+  }, []);
+  if (movieDetailes?.title && movieUrl.length === 0) {
+    switch (movieDetailes.title) {
+      case `John Wick: Chapter 3 - Parabellum`:
+        setmovieUrl(movies[0].youtube);
+        break;
+      case "dark-phoenix":
+        setmovieUrl(movies[1].youtube);
+        break;
+      case "godzilla-king-of-the-monsters":
+        setmovieUrl(movies[2].youtube);
+        break;
+
+      default:
+        break;
+    }
+  }
+
+  if (movieUrl.length === 0) {
+    return <h1>loading...</h1>;
+  }
+  console.log(movieUrl);
+  const opts = {
+    // height: "100%",
+    width: "100%",
+    playerVars: {
+      autoplay: 1,
+    },
+  };
+
+  return (
+    <section className={styles.hero}>
+      {/* <Youtube videoId={movieUrl} opts={opts} /> */}
+      <iframe
+        width="100%"
+        height="100%"
+        src={`https://www.youtube.com/embed/${movieUrl}?autoplay=1&fullscreen=1`}
+        title="John Wick: Chapter 3 - Parabellum (2019 Movie) Official Trailer – Keanu Reeves, Halle Berry"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullscreen
+      >
+      </iframe>
+      {/* <ModalVideo /> */}
+    </section>
+  );
+};
