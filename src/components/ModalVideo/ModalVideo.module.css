@@ -1,0 +1,17 @@
+p,
+h1,
+p h1 {
+    color: beige;
+}
+
+.content {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    top: 0;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+}
