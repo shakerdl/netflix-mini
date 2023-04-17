@@ -3,7 +3,6 @@ import styles from "./Hero.module.css";
 import config from "../../config";
 import ModalVideo from "../../components/ModalVideo";
 import { useState } from "react";
-import Youtube from "react-youtube";
 
 const movies = [
     {
@@ -56,29 +55,20 @@ export const Hero = () => {
     if (movieUrl.length === 0) {
         return <h1>loading...</h1>;
     }
-    console.log(movieUrl);
-    const opts = {
-        // height: "100%",
-        width: "100%",
-        playerVars: {
-            autoplay: 1,
-        },
-    };
 
     return (
         <section className={styles.hero}>
-            {/* <Youtube videoId={movieUrl} opts={opts} /> */}
             <iframe
                 width="100%"
                 height="100%"
                 src={`https://www.youtube.com/embed/${movieUrl}?autoplay=1&mute=1&fullscreen=1`}
-                title="John Wick: Chapter 3 - Parabellum (2019 Movie) Official Trailer – Keanu Reeves, Halle Berry"
+                title={`${movieDetails.title}`}
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullscreen
             >
             </iframe>
-            {/* <ModalVideo /> */}
+            <ModalVideo movieDetails={movieDetails} />
         </section>
     );
 };
