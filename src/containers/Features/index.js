@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import config from '../../config/index';
 // import styles from './Features.module.css'
-
+require('dotenv').config()
 
 const Features = () => {
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
-        const imdbKey = config.NETFLIX_MINI_API_KEY;
-        const youtubeKey = config.YOUTUBE_API_KEY;
+        const imdbKey = process.env.NETFLIX_MINI_API_KEY;
+        const youtubeKey = process.env.YOUTUBE_API_KEY;
 
         // Fetch trending movies from IMDb API
         const imdbUrl =

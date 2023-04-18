@@ -3,6 +3,7 @@ import styles from "./Hero.module.css";
 import config from "../../config";
 import ModalVideo from "../../components/ModalVideo";
 import { useState } from "react";
+require('dotenv').config()
 
 const movies = [
     {
@@ -29,7 +30,7 @@ export const Hero = () => {
     // todo: add random url that match the video from
     useEffect(() => {
         fetch(
-            `${API_URL}movie/${movies[0].id}?api_key=${config.NETFLIX_MINI_API_KEY}`
+            `${API_URL}movie/${movies[0].id}?api_key=${process.env.NETFLIX_MINI_API_KEY}`
         )
             .then((response) => response.json())
             .then((response) => setMovieDetails(response))
