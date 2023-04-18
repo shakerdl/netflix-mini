@@ -3,21 +3,18 @@ import React, { useState, useEffect } from "react";
 
 const Features = () => {
   const [movies, setMovies] = useState([]);
+  const imagesUrls = "https://image.tmdb.org/t/p/w500"
 
   useEffect(() => {
     const imdbKey = process.env.REACT_APP_NETFLIX_MINI_API_KEY;
-    console.log(imdbKey);
     const youtubeKey = process.env.REACT_APP_YOUTUBE_API_KEY;
-    console.log(youtubeKey);
-    debugger
     // Fetch trending movies from IMDb API
     const imdbUrl = `https://api.themoviedb.org/3/trending/all/week?api_key=${imdbKey}`;
     fetch(imdbUrl)
       .then((imdbResponse) => imdbResponse.json())
       .then((imdbData) => {
-        const trendingMovies = imdbData.results;
+        const trendingMovies = imdbData.results.slice(0,4);
         console.log(trendingMovies);
-        debugger;
         // Search for trailers for each movie using YouTube API
         const youtubeUrl = "https://www.googleapis.com/youtube/v3/search";
         const trailerRequests = trendingMovies.map((movie) => {
@@ -51,9 +48,13 @@ const Features = () => {
     <div>
       <h1>Trending Movies</h1>
       <ul>
-        {movies.map((movie) => (
+        {
+            console.log(movies[0])
+        }
+        {
+        movies.map((movie) => (
           <li key={movie.id}>
-            <img src={movie.image} alt={movie.title} />
+            <img src={`${imagesUrls}${movie.poster_path}`} alt={movie.title} />
             <button onClick={() => window.open(movie.trailerUrl)}>
               Play Trailer
             </button>

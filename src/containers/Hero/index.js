@@ -63,7 +63,6 @@ export const Hero = () => {
                 height="100%"
                 src={`https://www.youtube.com/embed/${movieUrl}?autoplay=1&mute=1&fullscreen=1`}
                 title={`${movieDetails.title}`}
-                frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
             >
