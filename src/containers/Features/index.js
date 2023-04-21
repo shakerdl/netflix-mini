@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
-import styles from './Features.module.css'
+import styles from "./Features.module.css";
 
 const Features = () => {
   const [movies, setMovies] = useState([]);
-  const imagesUrls = "https://image.tmdb.org/t/p/w500"
-
+  const imagesUrls = "https://image.tmdb.org/t/p/w500";
+  const imdbKey = process.env.REACT_APP_NETFLIX_MINI_API_KEY;
+  const youtubeKey = process.env.REACT_APP_YOUTUBE_API_KEY;
   useEffect(() => {
-    const imdbKey = process.env.REACT_APP_NETFLIX_MINI_API_KEY;
-    const youtubeKey = process.env.REACT_APP_YOUTUBE_API_KEY;
     // Fetch trending movies from IMDb API
     const imdbUrl = `https://api.themoviedb.org/3/trending/all/week?api_key=${imdbKey}&origin=*`;
     fetch(imdbUrl)
       .then((imdbResponse) => imdbResponse.json())
       .then((imdbData) => {
-        const trendingMovies = imdbData.results.slice(0,4);
+        const trendingMovies = imdbData.results.slice(0, 4);
         console.log(trendingMovies);
         // Search for trailers for each movie using YouTube API
         const youtubeUrl = "https://www.googleapis.com/youtube/v3/search";
@@ -49,14 +48,8 @@ const Features = () => {
     <div>
       <h1>Trending Movies</h1>
       <ul>
-        {
-        movies.map((movie) => ( <Card movie={movie} imgUrl={`${imagesUrls}${movie.poster_path}`} />
-        //   <li key={movie.id}>
-        //     <img src={`${imagesUrls}${movie.poster_path}`} alt={movie.title} />
-        //     <button onClick={() => window.open(movie.trailerUrl)}>
-        //       Play Trailer
-        //     </button>
-        //   </li>
+        {movies.map((movie) => (
+          <Card movie={movie} imgUrl={`${imagesUrls}${movie.poster_path}`} />
         ))}
       </ul>
     </div>
