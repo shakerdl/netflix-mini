@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-// import styles from './Features.module.css'
+import Card from "./Card";
+import styles from './Features.module.css'
 
 const Features = () => {
   const [movies, setMovies] = useState([]);
@@ -49,13 +50,13 @@ const Features = () => {
       <h1>Trending Movies</h1>
       <ul>
         {
-        movies.map((movie) => (
-          <li key={movie.id}>
-            <img src={`${imagesUrls}${movie.poster_path}`} alt={movie.title} />
-            <button onClick={() => window.open(movie.trailerUrl)}>
-              Play Trailer
-            </button>
-          </li>
+        movies.map((movie) => ( <Card movie={movie} imgUrl={`${imagesUrls}${movie.poster_path}`} />
+        //   <li key={movie.id}>
+        //     <img src={`${imagesUrls}${movie.poster_path}`} alt={movie.title} />
+        //     <button onClick={() => window.open(movie.trailerUrl)}>
+        //       Play Trailer
+        //     </button>
+        //   </li>
         ))}
       </ul>
     </div>
