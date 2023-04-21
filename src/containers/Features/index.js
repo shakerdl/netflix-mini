@@ -9,7 +9,7 @@ const Features = () => {
     const imdbKey = process.env.REACT_APP_NETFLIX_MINI_API_KEY;
     const youtubeKey = process.env.REACT_APP_YOUTUBE_API_KEY;
     // Fetch trending movies from IMDb API
-    const imdbUrl = `https://api.themoviedb.org/3/trending/all/week?api_key=${imdbKey}`;
+    const imdbUrl = `https://api.themoviedb.org/3/trending/all/week?api_key=${imdbKey}&origin=*`;
     fetch(imdbUrl)
       .then((imdbResponse) => imdbResponse.json())
       .then((imdbData) => {
@@ -48,9 +48,6 @@ const Features = () => {
     <div>
       <h1>Trending Movies</h1>
       <ul>
-        {
-            console.log(movies[0])
-        }
         {
         movies.map((movie) => (
           <li key={movie.id}>
