@@ -5,14 +5,11 @@
     justify-content: space-between;
 }
 
-
-
-/* Left Header */
-.leftHeader>div {
+/* .leftHeader>div {
     display: inline-block;
 }
 
-/* Right Header */
+
 nav {
     padding: 10px;
 
@@ -36,9 +33,9 @@ li {
 
 
 .logoContainer img {
-    width: 50%; /* Start with 100% width */
-    height: auto; /* Maintain aspect ratio */
+    width: 50%; 
+    height: auto; 
   }
 
   
-  
+   */
