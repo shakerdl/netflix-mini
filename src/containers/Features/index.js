@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import styles from "./Features.module.css";
 import useFetch from "../../hooks/useFetch";
-import { combaineUrlParams } from "../../utils/utils";
+import { combineUrlParams } from "../../utils/utils";
 
 const api = {
   youtube: {
@@ -28,17 +28,14 @@ const Features = () => {
       const trendingMovies = imdbData.results.slice(0, 4);
       setMovies(trendingMovies);
     }
-    debugger
   }, [imdbData]);
 
   useEffect(() => {
     // Search for trailers for each movie using YouTube API
     if (movies.length > 0) {
-      debugger
       const updatedMovies = movies.map((movie) => {
-        setTrailerUrl(combaineUrlParams(movies[0], api.youtube.key, api.youtube.url));
+        setTrailerUrl(combineUrlParams(movies[0], api.youtube.key, api.youtube.url));
         const videos = trailerUrl.items;
-        debugger;
         if (videos.length > 0) {
           movie.trailerUrl = `https://www.youtube.com/watch?v=${videos[0].id.videoId}`;
         }

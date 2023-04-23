@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styles from "./Hero.module.css";
 import ModalVideo from "../../components/ModalVideo";
 import { useState } from "react";
+import { getRandomInt } from "../../utils/utils";
 
 
 const movies = [
@@ -13,12 +14,12 @@ const movies = [
     {
         id: 320288,
         name: "dark-phoenix",
-        youtube: "pU8-7BX9uxs",
+        youtube: "azvR__GRQic",
     },
     {
         id: 373571,
         name: "godzilla-king-of-the-monsters",
-        youtube: "pU8-7BX9uxs",
+        youtube: "KDnKuFtdc7A",
     },
 ];
 
@@ -29,7 +30,7 @@ export const Hero = () => {
     // todo: add random url that match the video from
     useEffect(() => {
         fetch(
-            `${API_URL}movie/${movies[0].id}?api_key=${process.env.REACT_APP_NETFLIX_MINI_API_KEY}`
+            `${API_URL}movie/${movies[getRandomInt(3)].id}?api_key=${process.env.REACT_APP_NETFLIX_MINI_API_KEY}`
         )
             .then((response) => response.json())
             .then((response) => setMovieDetails(response))
@@ -40,10 +41,10 @@ export const Hero = () => {
             case `John Wick: Chapter 3 - Parabellum`:
                 setMovieUrl(movies[0].youtube);
                 break;
-            case "dark-phoenix":
+            case "Dark Phoenix":
                 setMovieUrl(movies[1].youtube);
                 break;
-            case "godzilla-king-of-the-monsters":
+            case "Godzilla: King of the Monsters":
                 setMovieUrl(movies[2].youtube);
                 break;
 
