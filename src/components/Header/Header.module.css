@@ -5,15 +5,14 @@
     justify-content: space-between;
 }
 
-/* .leftHeader>div {
+.leftHeader > div {
     display: inline-block;
 }
-
 
 nav {
     padding: 10px;
 
-    @media (min-width: 600px){
+    @media (min-width: 600px) {
         padding: 20px;
     }
 }
@@ -28,14 +27,9 @@ li {
 }
 .logoContainer {
     display: grid;
-
 }
 
-
 .logoContainer img {
-    width: 50%; 
-    height: auto; 
-  }
-
-  
-   */
+    width: 50%;
+    height: auto;
+}
