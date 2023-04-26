@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from '../../assets/logo.png';
 import styles from './Header.module.css';
+import { Route, Routes } from 'react-router-dom';
 
 const Header = () => {
     return (
@@ -10,8 +11,9 @@ const Header = () => {
                 1.search box
                 2.profile name */}
 
-                <div>Profile</div>
+                <div >Profile</div>
                 <div>Search</div>
+                <div>Favorites</div>
             </div>
             <div className={styles.rightRight}>
                 <nav>
@@ -25,6 +27,9 @@ const Header = () => {
                     <img src={logo} alt="Logo" />
                 </div>
             </div>
+            <Routes>
+                <Route ></Route>
+            </Routes>
         </header>
     )
 }
