@@ -1,4 +1,4 @@
-export const combineUrlParams = (movie, key, url) => {
+export const combaineUrlParams = (movie, key, url) => {
   const query = `${movie.title} trailer`;
   // using new URLSearchParams for easy connect queries togethers
   const params = new URLSearchParams({

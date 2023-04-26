@@ -1,9 +1,15 @@
 .header {
-    background-color: blue;
+    /* background-color: blue; */
     grid-area: 1 / 1 / 2 / 2;
     display: flex;
     justify-content: space-between;
 }
+a {
+    text-decoration: none;
+    color:black
+}
+
+
 
 .leftHeader > div {
     display: inline-block;
