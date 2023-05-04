@@ -12,8 +12,8 @@ const Header = () => {
                 2.profile name */}
 
                 <div >Profile</div>
-                <div><Link to="/search">Search</Link></div>
-                <div><Link to="/favorites">Favorites</Link></div>
+                {/* <div><Link to="/search">Search</Link></div> */}
+                {/* <div><Link to="/favorites">Favorites</Link></div> */}
             </div>
             <div className={styles.rightRight}>
                 <nav>
@@ -28,8 +28,8 @@ const Header = () => {
                 </div>
             </div>
             <Routes>
-                <Route path="/search" element={<Search />}></Route>
-                <Route path="/favorites" element={<Favorites />}></Route>
+                {/* <Route path="/search" element={<Search />}></Route> */}
+                {/* <Route path="/favorites" element={<Favorites />}></Route> */}
             </Routes>
         </header>
     )

@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./Card.module.css"
 
-const Card = ({movie,imgUrl}) => {
+const Card = ({ movie, imgUrl }) => {
+  debugger
   return (
     <li key={movie.id}>
       <img src={imgUrl} alt={movie.title} />
