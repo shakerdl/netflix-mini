@@ -3,7 +3,7 @@ import logo from "../../assets/logo.png";
 import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
 
-export const Header = () => {
+const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.leftHeader}>
@@ -43,10 +43,8 @@ export const Header = () => {
           <img src={logo} alt="Logo" />
         </div>
       </div>
-      <Routes>
-        {/* <Route path="/search" element={<Search />}></Route> */}
-        {/* <Route path="/favorites" element={<Favorites />}></Route> */}
-      </Routes>
     </header>
   );
 };
+
+export default Header
