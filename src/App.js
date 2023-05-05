@@ -11,7 +11,10 @@ function App() {
     <div className={styles.container}>
       <Header>Header</Header>
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route exact path="/" element={<Home />}></Route>
+        <Route path="/movies" element={<Home type="movies" />}></Route>
+        <Route path="/series" element={<Home type="series" />}></Route>
+        {/* <Route path="/watch" element={<Watch />}></Route>  //it's for the video to open in full screen */}
         <Route path="/search" element={<Search />}></Route>
         <Route path="/favorites" element={<Favorites />}></Route>
       </Routes>
