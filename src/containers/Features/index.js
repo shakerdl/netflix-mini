@@ -16,7 +16,7 @@ const api = {
   },
 };
 
-const Features = () => {
+const List = ({type}) => {
   const [movies, setMovies] = useState([]);
   const [imdbData, imdbLoading] = useFetch(api.imdb.url);
   const [trailerUrl, setTrailerUrl] = useState("");
@@ -59,4 +59,4 @@ const Features = () => {
   );
 };
 
-export default Features;
+export default List;

@@ -1,9 +1,11 @@
 import React from 'react'
 
-const Favorites = () => {
+const List = () => {
   return (
-    <div>Favorites</div>
+    <div>
+      
+    </div>
   )
 }
 
-export default Favorites
+export default List

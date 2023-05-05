@@ -4,7 +4,7 @@ import styles from "./App.module.css";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Search from "./components/Search";
-import Favorites from "./components/Favorites";
+import Favorites from "./components/List";
 
 function App() {
   return (
