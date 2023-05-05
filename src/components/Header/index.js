@@ -7,11 +7,15 @@ export const Header = () => {
     return (
         <header className={styles.header}>
             <div className={styles.leftHeader}>
-                {/* TODO:
-                1.search box
-                2.profile name */}
 
-                <div >Profile</div>
+<div>home Page</div>
+                <div><Link to="/series">Series</Link></div>
+                <div><Link to="/movies">
+                Movies
+                </Link>
+                    </div>
+                <div>Trending</div>
+                <div>My list</div>
                 <div><Link to="/search">Search</Link></div>
                 <div><Link to="/favorites">Favorites</Link></div>
             </div>
