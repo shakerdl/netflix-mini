@@ -8,7 +8,8 @@ export const Header = () => {
         <header className={styles.header}>
             <div className={styles.leftHeader}>
 
-<div>home Page</div>
+<div><Link to="/home">home Page</Link></div>
+
                 <div><Link to="/series">Series</Link></div>
                 <div><Link to="/movies">
                 Movies

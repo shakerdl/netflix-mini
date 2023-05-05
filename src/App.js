@@ -7,11 +7,14 @@ import Search from "./components/Search";
 import Favorites from "./components/List";
 
 function App() {
+  const user = true;
   return (
     <div className={styles.container}>
       <Header>Header</Header>
       <Routes>
         <Route exact path="/" element={<Home />}></Route>
+        <Route path="/register" element={<Home />}></Route>
+        <Route path="/login" element={<Home />}></Route>
         <Route path="/movies" element={<Home type="movies" />}></Route>
         <Route path="/series" element={<Home type="series" />}></Route>
         {/* <Route path="/watch" element={<Watch />}></Route>  //it's for the video to open in full screen */}
