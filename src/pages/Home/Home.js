@@ -7,31 +7,38 @@ import axios from "axios";
 import Header from "../../components/Header";
 
 const Home = ({ type }) => {
-  const [Lists, setLists] = useState([])
-  const [genre, setGenre] = useState(null)
+  const [lists, setLists] = useState([]);
+  const [genre, setGenre] = useState(null);
 
   useEffect(() => {
     const getRandomLists = async () => {
-      debugger
       try {
-        const res = await axios.get(`lists${type ? "?type=" + type : ""}${genre ? "&genre=" + genre : ""}`, {
-          headers: {
-            token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGNiZDdlYmU0NjAyYjE0N2VkNzhhMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4MzY2MDEwMywiZXhwIjoxNjg0MDkyMTAzfQ.Ny1a4dr4vcS4sjrU0wh8bwJWbqvf0mLpQkcmu-jIVFo"
+        const res = await axios.get(
+          `lists${type ? "?type=" + type : ""}${
+            genre ? "&genre=" + genre : ""
+          }`,
+          {
+            headers: {
+              token:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGNiZDdlYmU0NjAyYjE0N2VkNzhhMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4MzkwMTAxNCwiZXhwIjoxNjg0MzMzMDE0fQ.yCeB1EioosJkBKmI_HGvYiN5YZ5IN-Cb786KMyxtqDo",
+            },
           }
-        })
-        console.log(res)
+        );
+        setLists(res.data);
       } catch (err) {
         console.log(err);
       }
-    }
-    getRandomLists()
-  }, [type, genre])
+    };
+    getRandomLists();
+  }, [type, genre]);
   return (
     <>
       <Header>Header</Header>
       <Hero>Main Clip</Hero>
       {/* <Features>Features</Features> */}
-      <List />
+      {lists.map((list) => {
+       return <List list={list} />;
+      })}
       <Footer>Footer</Footer>
     </>
   );
