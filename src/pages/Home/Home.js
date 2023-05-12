@@ -37,6 +37,7 @@ const Home = ({ type }) => {
       <Hero>Main Clip</Hero>
       {/* <Features>Features</Features> */}
       {lists.map((list) => {
+        debugger
        return <List list={list} />;
       })}
       <Footer>Footer</Footer>

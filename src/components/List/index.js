@@ -1,9 +1,8 @@
 import React,{useRef,useState} from 'react'
 import ListItem from "../ListItem"
-const List = () => {
+const List = ({list}) => {
   const [isMoved, setIsMoved] = useState(false);
   const [slideNumber, setSlideNumber] = useState(0);
-
   const listRef = useRef();
 
   const handleClick = (direction) => {
@@ -21,7 +20,7 @@ const List = () => {
 
   return (
     <div className="list">
-      <span className="listTitle">Continue to watch</span>
+      <span className="listTitle">{list.title}</span>
       <div className="wrapper">
         <button
           className="sliderArrow left"
