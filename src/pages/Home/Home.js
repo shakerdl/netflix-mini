@@ -14,8 +14,7 @@ const Home = ({ type }) => {
     const getRandomLists = async () => {
       try {
         const res = await axios.get(
-          `lists${type ? "?type=" + type : ""}${
-            genre ? "&genre=" + genre : ""
+          `lists${type ? "?type=" + type : ""}${genre ? "&genre=" + genre : ""
           }`,
           {
             headers: {
@@ -37,8 +36,7 @@ const Home = ({ type }) => {
       <Hero>Main Clip</Hero>
       {/* <Features>Features</Features> */}
       {lists.map((list) => {
-        debugger
-       return <List list={list} />;
+        return <List list={list} />;
       })}
       <Footer>Footer</Footer>
     </>
