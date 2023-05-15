@@ -7,6 +7,7 @@ const ListItem = ({ index, item }) => {
   const [movie, setMovie] = useState({});
 
   useEffect(() => {
+    //use index of the list to avoid call Trailer for ComingSoon
     if (index === 0) return;
     const getMovie = async () => {
       try {
