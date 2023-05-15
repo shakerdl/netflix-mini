@@ -1,21 +1,22 @@
-import axios from 'axios';
-import React, { useState, useEffect } from 'react'
-
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import styles from "./ListItem.module.css";
 
 const ListItem = ({ index, item }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [movie, setMovie] = useState({});
 
   useEffect(() => {
+    if (index === 0) return;
     const getMovie = async () => {
       try {
         const res = await axios.get("/movies/find/" + item.id, {
           headers: {
             token:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGNiZDdlYmU0NjAyYjE0N2VkNzhhMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4NDAxMjQxMywiZXhwIjoxNjg0NDQ0NDEzfQ.bkaRGU8q2BB0DqU7qp0ozhZADahZGjZOo45PMM6NfAA",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGNiZDdlYmU0NjAyYjE0N2VkNzhhMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4NDE3MDA1MSwiZXhwIjoxNjg0NjAyMDUxfQ.XN1q99dC5vPHg9sAnKZ0ZSDbAwChyT9CigsT4eWqALU",
           },
         });
-        debugger
+        debugger;
         setMovie(res.data);
       } catch (err) {
         console.log(err);
@@ -26,18 +27,19 @@ const ListItem = ({ index, item }) => {
 
   return (
     <div
-      className="listItem"
+      className={styles.listItem}
       style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <img
-        src={item.image}
-        alt=""
-      />
+      <img src={item.image} alt="" />
       {isHovered && (
         <>
-          {movie.linkEmbed && <video src={movie.linkEmbed} autoPlay={true} loop />}
+          {index === 0 ? 
+            <div>UpComing</div>
+           : 
+            <video src={movie.linkEmbed} autoPlay={true} loop />
+          }
           <div className="itemInfo">
             <div className="icons">
               {/* <PlayArrow className="icon" />
@@ -51,7 +53,7 @@ const ListItem = ({ index, item }) => {
         </>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default ListItem
+export default ListItem;
