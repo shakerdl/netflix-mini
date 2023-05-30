@@ -6,24 +6,31 @@ import List from "../../components/List";
 import axios from "axios";
 import Header from "../../components/Header";
 
+let lockTest = false;
 const Home = ({ type }) => {
   const [lists, setLists] = useState([]);
   const [genre, setGenre] = useState(null);
 
   useEffect(() => {
+
     const getRandomLists = async () => {
       try {
-        const res = await axios.get(
-          `lists${type ? "?type=" + type : ""}${genre ? "&genre=" + genre : ""
-          }`,
-          {
-            headers: {
-              token:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGNiZDdlYmU0NjAyYjE0N2VkNzhhMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4MzkwMTAxNCwiZXhwIjoxNjg0MzMzMDE0fQ.yCeB1EioosJkBKmI_HGvYiN5YZ5IN-Cb786KMyxtqDo",
-            },
-          }
-        );
-        setLists(res.data);
+        if (!lockTest) {
+          lockTest = true;
+          const res = await axios.get(
+            `lists${type ? "?type=" + type : ""}${genre ? "&genre=" + genre : ""
+            }`,
+            {
+              headers: {
+                token:
+                  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGNiZDdlYmU0NjAyYjE0N2VkNzhhMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4MzkwMTAxNCwiZXhwIjoxNjg0MzMzMDE0fQ.yCeB1EioosJkBKmI_HGvYiN5YZ5IN-Cb786KMyxtqDo",
+              },
+            }
+          );
+          debugger
+          setLists(res.data);
+        }
+
       } catch (err) {
         console.log(err);
       }

@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import styles from "./ListItem.module.css";
 
+let lockTest = false;
 const ListItem = ({ index, item }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [movie, setMovie] = useState({});
@@ -23,7 +24,11 @@ const ListItem = ({ index, item }) => {
         console.log(err);
       }
     };
-    getMovie();
+    if (!lockTest) {
+      debugger
+      lockTest = true;
+      getMovie();
+    }
   }, [item]);
 
   return (
@@ -36,9 +41,9 @@ const ListItem = ({ index, item }) => {
       <img src={item.image} alt="" />
       {isHovered && (
         <>
-          {index === 0 ? 
+          {index === 0 ?
             <div>UpComing</div>
-           : 
+            :
             <video src={movie.linkEmbed} autoPlay={true} loop />
           }
           <div className="itemInfo">
