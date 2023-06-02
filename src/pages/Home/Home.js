@@ -19,7 +19,7 @@ const Home = ({ type }) => {
           {
             headers: {
               token:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGNiZDdlYmU0NjAyYjE0N2VkNzhhMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4MzkwMTAxNCwiZXhwIjoxNjg0MzMzMDE0fQ.yCeB1EioosJkBKmI_HGvYiN5YZ5IN-Cb786KMyxtqDo",
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGNiZDdlYmU0NjAyYjE0N2VkNzhhMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4NTcxNjQwOCwiZXhwIjoxNjg2MTQ4NDA4fQ.i0cjiV8-B4R2_LPFb1UO5EaRB2R72SDsfsZEohH_qIw",
             },
           }
         );
@@ -30,17 +30,20 @@ const Home = ({ type }) => {
     };
     getRandomLists();
   }, [type, genre]);
+  debugger
+  console.log(lists);
   return (
     <>
       <Header>Header</Header>
       <Hero>Main Clip</Hero>
-      {/* <Features>Features</Features> */}
-      {lists.map((list) => {
-        return <List list={list} />;
-      })}
+
       <Footer>Footer</Footer>
     </>
   );
 };
+
+// {lists.map((list) => {
+//   return <List list={list} />;
+// })}
 
 export default Home;
