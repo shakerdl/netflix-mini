@@ -20,7 +20,7 @@ const List = ({ list }) => {
 
   return (
     <div className="list">
-      <span className="listTitle">{list.title}</span>
+      <span className="listTitle">{list[0]}</span>
       <div className="wrapper">
         <button
           className="sliderArrow left"
@@ -29,7 +29,7 @@ const List = ({ list }) => {
         >Left</button>
         <div className="container" ref={listRef}>
           {
-            list.map((item, i) => {
+            list[1].map((item, i) => {
               return <ListItem index={i} item={item} />
             })
           }
