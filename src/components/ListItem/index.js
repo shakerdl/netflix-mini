@@ -1,8 +1,10 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import styles from "./ListItem.module.css";
+import VideoPlayer from "../VideoPlayer";
 
 const ListItem = ({ item }) => {
+  debugger
   const [isHovered, setIsHovered] = useState(false);
   const [urlTrailer, setUrlTrailer] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -33,26 +35,31 @@ const ListItem = ({ item }) => {
     if (isLoading) {
       return <div>Loading...</div>;
     }
-
-    if (urlTrailer) {
-      return (
-        <>
-          <video src={urlTrailer} autoPlay={true} loop />
-          <div className="itemInfo">
-            <div className="icons">
-              {/* <PlayArrow className="icon" />
+    return (
+      <>
+        {/* <iframe
+          className={styles.trailer}
+          title="trailer"
+          src={urlTrailer}
+          width="100%"
+          height="100%"
+          frameBorder="0"
+          allowFullScreen
+        >There is no video available</iframe> */}
+        {<VideoPlayer url={urlTrailer} />}
+        <div className="itemInfo">
+          <div className="icons">
+            {/* <PlayArrow className="icon" />
               <Add className="icon" />
               <ThumbUpAltOutlined className="icon" /> */}
-            </div>
-            <div className="itemInfoTop">
-              <span>{item.year}</span>
-            </div>
           </div>
-        </>
-      );
-    }
+          <div className="itemInfoTop">
+            <span>{item.year}</span>
+          </div>
+        </div>
+      </>
+    );
 
-    return <div>There is no video available</div>;
   };
 
   return (

@@ -1,34 +1,36 @@
 .listItem {
-  width: 225px;
-  height: 120px;
-  background-color: var(--main-color);
-  margin-right: 5px;
-  overflow: hidden;
-  cursor: pointer;
-  color: white;
-  transition: transform .5s;
+    width: 225px;
+    height: 120px;
+    background-color: var(--main-color);
+    margin-right: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    color: white;
+    transition: transform 0.5s;
 }
 
 .listItem:hover {
-  transform: scale(1.2); 
+    transform: scale(1.2);
 }
 
 .listItem.playing {
-  background-color: black;
+    background-color: black;
 }
 
 img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
 }
 
-video {
-  /* width: 100%; */
-  height: 140px;
-  width: 350px;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
+.trailer {
+    /* width: 100%; */
+    /* width: 225px;
+    height: 120px; */
+    object-fit: cover;
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    background-color: red;
 }

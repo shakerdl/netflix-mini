@@ -13,6 +13,7 @@ const Home = ({ type }) => {
 
   useEffect(() => {
     const getRandomLists = async () => {
+      debugger
       const res = await axios.get(
         `lists${type ? "?type=" + type : ""}${genre ? "&genre=" + genre : ""}`,
         {
