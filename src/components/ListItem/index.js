@@ -12,8 +12,7 @@ const ListItem = ({ item }) => {
       try {
         const res = await axios.get("/movies/find/" + item.id, {
           headers: {
-            token:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGNiZDdlYmU0NjAyYjE0N2VkNzhhMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4NjIyNTAyOSwiZXhwIjoxNjg2NjU3MDI5fQ.Y-M2FnUX53xUqyqoFQS8-M9qG4K0Tkjx3uT5gsBBX6c",
+            token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGNiZDdlYmU0NjAyYjE0N2VkNzhhMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4Njc1OTE0OCwiZXhwIjoxNjg3MTkxMTQ4fQ.VRMQ12vfVjEY5sLupZusW4ZAH8RODpFs1aP8Ell3RLc",
           },
         });
         setUrlTrailer(res.data);
@@ -29,6 +28,28 @@ const ListItem = ({ item }) => {
     }
   }, [item, urlTrailer]);
 
+  useEffect(() => {
+    if (isHovered && !isLoading && urlTrailer) {
+      debugger
+      const listItem = document.querySelector(`.${styles.listItem}`);
+      const img = listItem.querySelector("img");
+      const video = listItem.querySelector("video");
+
+      const handleTransitionEnd = () => {
+        listItem.classList.add(styles.playing);
+        img.style.display = "none";
+        video.play();
+        listItem.removeEventListener("transitionend", handleTransitionEnd);
+      };
+
+      listItem.addEventListener("transitionend", handleTransitionEnd);
+
+      return () => {
+        listItem.removeEventListener("transitionend", handleTransitionEnd);
+      };
+    }
+  }, [isHovered, isLoading, urlTrailer]);
+
   const Hover = () => {
     if (isLoading) {
       return <div>Loading...</div>;
@@ -37,7 +58,7 @@ const ListItem = ({ item }) => {
     if (urlTrailer) {
       return (
         <>
-          <video src={urlTrailer} autoPlay={true} loop />
+          <video src={urlTrailer} autoPlay loop />
           <div className="itemInfo">
             <div className="icons">
               {/* <PlayArrow className="icon" />
@@ -62,10 +83,13 @@ const ListItem = ({ item }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <img src={item.image} alt="" />
-      {/* {isHovered && <Hover />} */}
-      <Hover />
-    </div>
+      <img className={`image ${isHovered ? 'hovered' : ''}`} src={item.image} alt={title} />
+      {isHovered && (
+        <video className="video" src={video} autoPlay controls>
+          Your browser does not support the video tag.
+        </video>
+      )}  
+    </div>  
   );
 };
 

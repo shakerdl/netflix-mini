@@ -6,19 +6,18 @@ import List from "../../components/List";
 import axios from "axios";
 import Header from "../../components/Header";
 
-let lockTest = false;
+
 const Home = ({ type }) => {
   const [lists, setLists] = useState([]);
-  const [genre, setGenre] = useState(null);
 
   useEffect(() => {
     const getRandomLists = async () => {
       const res = await axios.get(
-        `lists${type ? "?type=" + type : ""}${genre ? "&genre=" + genre : ""}`,
+        `lists${type ? "?title_type=" + type : ""}${genre ? "&title_type=" + genre : ""}`,
         {
           headers: {
             token:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGNiZDdlYmU0NjAyYjE0N2VkNzhhMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4NjIyNTAyOSwiZXhwIjoxNjg2NjU3MDI5fQ.Y-M2FnUX53xUqyqoFQS8-M9qG4K0Tkjx3uT5gsBBX6c",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGNiZDdlYmU0NjAyYjE0N2VkNzhhMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4Njc1OTE0OCwiZXhwIjoxNjg3MTkxMTQ4fQ.VRMQ12vfVjEY5sLupZusW4ZAH8RODpFs1aP8Ell3RLc",
           },
         }
       );
