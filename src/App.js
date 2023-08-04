@@ -12,7 +12,7 @@ function App() {
 
   const validUser = (currentUser, type) => {
     if (currentUser) {
-      return <Home />;
+      return <Home/>;
     }
     if (type === "register") {
       return <Register />;

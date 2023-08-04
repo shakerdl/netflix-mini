@@ -9,15 +9,15 @@ import Header from "../../components/Header";
 
 const Home = ({ type }) => {
   const [lists, setLists] = useState([]);
-
+  
   useEffect(() => {
     const getRandomLists = async () => {
       const res = await axios.get(
-        `lists${type ? "?title_type=" + type : ""}${genre ? "&title_type=" + genre : ""}`,
+        `lists${type ? "?title_type=" + type : ""}${type ? "&time_type=" : ""}`,
         {
           headers: {
             token:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGNiZDdlYmU0NjAyYjE0N2VkNzhhMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4Njc1OTE0OCwiZXhwIjoxNjg3MTkxMTQ4fQ.VRMQ12vfVjEY5sLupZusW4ZAH8RODpFs1aP8Ell3RLc",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGNiZDdlYmU0NjAyYjE0N2VkNzhhMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5MTE0NDg5MiwiZXhwIjoxNjkxNTc2ODkyfQ.RdxtkDsYlka1tBe67FiGJS6ZqUu0WBZ73HBIyhJPhqw",
           },
         }
       );
@@ -25,7 +25,7 @@ const Home = ({ type }) => {
     };
 
     getRandomLists();
-  }, [type, genre]);
+  }, [type]);
   return (
     <>
       <Header>Header</Header>
