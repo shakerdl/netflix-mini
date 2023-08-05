@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import styles from "./ListItem.module.css";
+import YouTube from "react-youtube";
 
 const ListItem = ({ item }) => {
   debugger
@@ -57,9 +58,17 @@ const ListItem = ({ item }) => {
     }
 
     if (objectTrailer) {
+      const opts = {
+        height: "390",
+        width: "100%",
+        playerVars: {
+          autoplay: 1,
+        },
+      };
+
       return (
         <>
-          <video src={objectTrailer} autoPlay loop />
+          <YouTube videoId={objectTrailer.key} opts={opts} />
           <div className="itemInfo">
             <div className="icons">
               {/* <PlayArrow className="icon" />
