@@ -5,18 +5,18 @@ import styles from "./ListItem.module.css";
 const ListItem = ({ item }) => {
   debugger
   const [isHovered, setIsHovered] = useState(false);
-  const [urlTrailer, setUrlTrailer] = useState(null);
+  const [objectTrailer, setObjectTrailer] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchUrlTrailer = async () => {
+    const fetchObjectTrailer = async () => {
       try {
         const res = await axios.get("/movies/find/" + item.id, {
           headers: {
             token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGNiZDdlYmU0NjAyYjE0N2VkNzhhMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5MTE0NDg5MiwiZXhwIjoxNjkxNTc2ODkyfQ.RdxtkDsYlka1tBe67FiGJS6ZqUu0WBZ73HBIyhJPhqw",
           },
         });
-        setUrlTrailer(res.data);
+        setObjectTrailer(res.data);
       } catch (err) {
         console.log(err);
       } finally {
@@ -24,13 +24,13 @@ const ListItem = ({ item }) => {
       }
     };
 
-    if (urlTrailer === null) {
-      fetchUrlTrailer();
+    if (objectTrailer === null) {
+      fetchObjectTrailer();
     }
-  }, [item, urlTrailer]);
+  }, [item, objectTrailer]);
 
   useEffect(() => {
-    if (isHovered && !isLoading && urlTrailer) {
+    if (isHovered && !isLoading && objectTrailer) {
       debugger
       const listItem = document.querySelector(`.${styles.listItem}`);
       const img = listItem.querySelector("img");
@@ -49,17 +49,17 @@ const ListItem = ({ item }) => {
         listItem.removeEventListener("transitionend", handleTransitionEnd);
       };
     }
-  }, [isHovered, isLoading, urlTrailer]);
+  }, [isHovered, isLoading, objectTrailer]);
 
   const Hover = () => {
     if (isLoading) {
       return <div>Loading...</div>;
     }
 
-    if (urlTrailer) {
+    if (objectTrailer) {
       return (
         <>
-          <video src={urlTrailer} autoPlay loop />
+          <video src={objectTrailer} autoPlay loop />
           <div className="itemInfo">
             <div className="icons">
               {/* <PlayArrow className="icon" />
