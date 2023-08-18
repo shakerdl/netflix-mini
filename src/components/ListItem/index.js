@@ -8,13 +8,14 @@ const ListItem = ({ item }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [objectTrailer, setObjectTrailer] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-
+  // example : https://image.tmdb.org/t/p/original/wigZBAmNrIhxp2FNGOROUAeHvdh.jpg
+  const TrailerImg = "https://image.tmdb.org/t/p/original"
   useEffect(() => {
     const fetchObjectTrailer = async () => {
       try {
         const res = await axios.get("/movies/find/" + item.id, {
           headers: {
-            token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGNiZDdlYmU0NjAyYjE0N2VkNzhhMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5MjM0NzAwMywiZXhwIjoxNjkyNzc5MDAzfQ.5Px1frz3nW20k8EqoiqE3oqAKdk-QWqIroIVo3Pvy64",
+            token: process.env.REACT_APP_API_TOKEN,
           },
         });
         setObjectTrailer(res.data);
@@ -76,7 +77,7 @@ const ListItem = ({ item }) => {
               <ThumbUpAltOutlined className="icon" /> */}
             </div>
             <div className="itemInfoTop">
-              <span>{item.year}</span>
+              <span>{item.release_date}</span>
             </div>
           </div>
         </>
@@ -93,13 +94,10 @@ const ListItem = ({ item }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* <img className={`image ${isHovered ? 'hovered' : ''}`} src={item.image} alt={title} />
-      {isHovered && (
-        <video className="video" src={video} autoPlay controls>
-          Your browser does not support the video tag.
-        </video>
-      )}   */}
-    </div>  
+      <img className={`image ${isHovered ? 'hovered' : ''}`} src={TrailerImg + item.poster_path} alt={item.title} />
+      {isHovered && Hover
+      }
+    </div>
   );
 };
 

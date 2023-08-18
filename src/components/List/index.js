@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import ListItem from "../ListItem"
-const List = ({ list,listName }) => {
+const List = ({ list, listName }) => {
   const [isMoved, setIsMoved] = useState(false);
   const [slideNumber, setSlideNumber] = useState(0);
   const listRef = useRef();

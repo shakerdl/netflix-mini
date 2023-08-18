@@ -7,7 +7,7 @@ import axios from "axios"
 import Header from "../../components/Header"
 
 const Home = ({ type }) => {
-  const [lists, setLists] = useState([])
+  const [lists, setLists] = useState([]);
 
   useEffect(() => {
     const getRandomLists = async () => {
@@ -15,34 +15,30 @@ const Home = ({ type }) => {
         `lists${type ? "?title_type=" + type : ""}${type ? "&time_type=" : ""}`,
         {
           headers: {
-            token:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGNiZDdlYmU0NjAyYjE0N2VkNzhhMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5MjM0NzAwMywiZXhwIjoxNjkyNzc5MDAzfQ.5Px1frz3nW20k8EqoiqE3oqAKdk-QWqIroIVo3Pvy64",
+            token: process.env.REACT_APP_API_TOKEN,
           },
         }
-      )
+      );
       if (type) {
-        setLists(res.data[0])
+        setLists(res.data[0]);
       } else {
-        setLists(res.data)
+        setLists(res.data);
       }
-    }
+    };
 
-    getRandomLists()
-  }, [type])
+    getRandomLists();
+  }, [type]);
+
   return (
     <>
       <Header>Header</Header>
       <Hero>Main Clip</Hero>
       {Object.entries(lists).map(([listName, listItems]) => (
-        <>
-          {listItems.map((item, index) => (
-            <List key={index} listName={listName} list={item} />
-          ))}
-        </>
+        <List listName={listName} list={listItems} />
       ))}
       <Footer>Footer</Footer>
     </>
-  )
-}
+  );
+};
 
 export default Home
