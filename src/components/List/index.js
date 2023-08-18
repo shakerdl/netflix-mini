@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import ListItem from "../ListItem"
-const List = ({ list }) => {
+const List = ({ list,listName }) => {
   const [isMoved, setIsMoved] = useState(false);
   const [slideNumber, setSlideNumber] = useState(0);
   const listRef = useRef();
@@ -20,7 +20,7 @@ const List = ({ list }) => {
 
   return (
     <div className="list">
-      <span className="listTitle">{list[0]}</span>
+      <span className="listTitle">{listName}</span>
       <div className="wrapper">
         <button
           className="sliderArrow left"
@@ -29,7 +29,7 @@ const List = ({ list }) => {
         >Left</button>
         <div className="container" ref={listRef}>
           {
-            list[1].map((item, i) => {
+            list.map((item, i) => {
               return <ListItem index={i} item={item} />
             })
           }

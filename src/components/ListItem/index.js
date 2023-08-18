@@ -14,7 +14,7 @@ const ListItem = ({ item }) => {
       try {
         const res = await axios.get("/movies/find/" + item.id, {
           headers: {
-            token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGNiZDdlYmU0NjAyYjE0N2VkNzhhMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5MTE0NDg5MiwiZXhwIjoxNjkxNTc2ODkyfQ.RdxtkDsYlka1tBe67FiGJS6ZqUu0WBZ73HBIyhJPhqw",
+            token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGNiZDdlYmU0NjAyYjE0N2VkNzhhMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5MjM0NzAwMywiZXhwIjoxNjkyNzc5MDAzfQ.5Px1frz3nW20k8EqoiqE3oqAKdk-QWqIroIVo3Pvy64",
           },
         });
         setObjectTrailer(res.data);

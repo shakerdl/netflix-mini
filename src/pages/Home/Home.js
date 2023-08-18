@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Hero } from "../../containers/Hero";
+import React, { useEffect, useState } from "react"
+import { Hero } from "../../containers/Hero"
 // import Features from "../../containers/Features";
-import Footer from "../../components/Footer";
-import List from "../../components/List";
-import axios from "axios";
-import Header from "../../components/Header";
-
+import Footer from "../../components/Footer"
+import List from "../../components/List"
+import axios from "axios"
+import Header from "../../components/Header"
 
 const Home = ({ type }) => {
-  const [lists, setLists] = useState([]);
-  
+  const [lists, setLists] = useState([])
+
   useEffect(() => {
     const getRandomLists = async () => {
       const res = await axios.get(
@@ -17,25 +16,33 @@ const Home = ({ type }) => {
         {
           headers: {
             token:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGNiZDdlYmU0NjAyYjE0N2VkNzhhMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5MTE0NDg5MiwiZXhwIjoxNjkxNTc2ODkyfQ.RdxtkDsYlka1tBe67FiGJS6ZqUu0WBZ73HBIyhJPhqw",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGNiZDdlYmU0NjAyYjE0N2VkNzhhMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5MjM0NzAwMywiZXhwIjoxNjkyNzc5MDAzfQ.5Px1frz3nW20k8EqoiqE3oqAKdk-QWqIroIVo3Pvy64",
           },
         }
-      );
-      setLists(res.data);
-    };
+      )
+      if (type) {
+        setLists(res.data[0])
+      } else {
+        setLists(res.data)
+      }
+    }
 
-    getRandomLists();
-  }, [type]);
+    getRandomLists()
+  }, [type])
   return (
     <>
       <Header>Header</Header>
       <Hero>Main Clip</Hero>
-      {lists.map((list) => {
-        return <List list={list} />;
-      })}
+      {Object.entries(lists).map(([listName, listItems]) => (
+        <>
+          {listItems.map((item, index) => (
+            <List key={index} listName={listName} list={item} />
+          ))}
+        </>
+      ))}
       <Footer>Footer</Footer>
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
