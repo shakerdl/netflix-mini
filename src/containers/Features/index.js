@@ -4,17 +4,17 @@ import styles from "./Features.module.css";
 import useFetch from "../../hooks/useFetch";
 import { combaineUrlParams } from "../../utils/utils";
 
-const api = {
-  youtube: {
-    key: process.env.REACT_APP_YOUTUBE_API_KEY,
-    url: "https://www.googleapis.com/youtube/v3/search",
-  },
-  imdb: {
-    key: process.env.REACT_APP_NETFLIX_MINI_API_KEY,
-    url: `https://api.themoviedb.org/3/trending/all/week?api_key=${process.env.REACT_APP_NETFLIX_MINI_API_KEY}&origin=*`,
-    imgs: "https://image.tmdb.org/t/p/w500",
-  },
-};
+// const api = {
+//   youtube: {
+//     key: process.env.REACT_APP_YOUTUBE_API_KEY,
+//     url: "https://www.googleapis.com/youtube/v3/search",
+//   },
+//   imdb: {
+//     key: process.env.REACT_APP_NETFLIX_MINI_API_KEY,
+//     url: `https://api.themoviedb.org/3/trending/all/week?api_key=${process.env.REACT_APP_NETFLIX_MINI_API_KEY}&origin=*`,
+//     imgs: "https://image.tmdb.org/t/p/w500",
+//   },
+// };
 
 const List = ({type}) => {
   const [movies, setMovies] = useState([]);
